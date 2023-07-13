@@ -1,0 +1,33 @@
+.item {
+    width: 100%;
+    position: relative;
+    padding: 3rem;
+}
+
+.item img {
+    width: 60%;
+    border: 1px solid white;
+    box-shadow: -1px 1px 50px -20px rgba(0, 0, 0, 2);
+}
+
+.item:hover {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+}
+
+.item h3 {
+    font-size: 2rem;
+    color: var(--secondary);
+    padding-top: 1rem;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 1024px) {
+    .item img {
+        width: 100%;
+    }
+    .item h3 {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+}

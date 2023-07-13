@@ -25,7 +25,7 @@ const facts = () => {
                     <img
                       alt={fact.alt}
                       src={fact.imageSrc}
-                      className="relative w-full max-w-[800px] mx-auto h-full object-cover shadow-xl p-1"
+                      className="relative w-full  h-[400px] mx-auto  object-cover shadow-xl p-1"
                     />
                   </div>
                 </div>
