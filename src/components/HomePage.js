@@ -4,6 +4,7 @@ import { animationStart, reveal } from "../utils/animation";
 import HeroVideo from "./HeroVideo";
 import MobileHero from './MobileHero'
 import HeroText from "./HeroText";
+import Comments from "./Comments";
 
 const HomePage = () => {
    const [isBigScreen, setIsBigScreen] = useState(false);
@@ -84,6 +85,7 @@ const HomePage = () => {
           </motion.div>
         )}
       </section>
+      <Comments/>
     </>
   );
 };
