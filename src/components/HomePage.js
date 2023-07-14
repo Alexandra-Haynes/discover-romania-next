@@ -4,7 +4,7 @@ import { animationStart, reveal } from "../utils/animation";
 import HeroVideo from "./HeroVideo";
 import MobileHero from './MobileHero'
 import HeroText from "./HeroText";
-import Comments from "./Comments";
+import Comments from "./CommentList";
 
 const HomePage = () => {
    const [isBigScreen, setIsBigScreen] = useState(false);
