@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
+
 import { GrEdit } from "react-icons/gr";
 import axios from "axios";
+import RemoveCommentBtn from "./RemoveCommentBtn";
 
 const getComments = async () => {
   try {
@@ -57,7 +58,6 @@ const CommentList = () => {
 
   return (
     <section>
-   
       <Link
         className="bg-green-800 p-3 rounded-md text-white mx-6"
         href="/addComment"
@@ -66,14 +66,17 @@ const CommentList = () => {
       </Link>
       {comments.map((comm) => (
         <div className="bg-white/90 m-4 rounded-md" key={comm._id}>
-          <div className="p-4  border border-slate-300 my-3 
-          flex items-start justify-between gap-1 rounded-md">
+          <div
+            className="p-4  border border-slate-300 my-3 
+          flex items-start justify-between gap-1 rounded-md"
+          >
             <div>
               <h2 className="text-xl font-semibold">{comm.title}</h2>
               <div>{comm.comment}</div>
             </div>
             <div className="flex gap-2">
-              <AiOutlineDelete className="text-red-700" />
+              <RemoveCommentBtn id={comm._id} />
+
               <Link href={`/editComment/${comm._id}`}>
                 <GrEdit className="text-green-600" />
               </Link>
