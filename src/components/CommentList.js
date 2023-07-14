@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-
+import { useSession } from "next-auth/react";
 import { GrEdit } from "react-icons/gr";
 import axios from "axios";
 import RemoveCommentBtn from "./RemoveCommentBtn";
+import { BiCommentAdd } from "react-icons/bi";
 
 const getComments = async () => {
   try {
@@ -19,6 +20,10 @@ const getComments = async () => {
 };
 
 const CommentList = () => {
+  // const {data: session} = useSession()
+  // const token = session?.user?.accessToken
+  const [session, loadingSession] = useSession();
+
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -53,15 +58,21 @@ const CommentList = () => {
   }
 
   if (comments.length === 0) {
-    return <div className="bg-white text-slate-900 h-[100px]">No comments available.</div>;
+    return (
+      <div className="bg-white text-slate-900 h-[100px]">
+        No comments available.
+      </div>
+    );
   }
 
   return (
     <section>
       <Link
-        className="bg-green-800 p-3 rounded-md text-white mx-6"
+        className="bg-green-800 p-3 rounded-md text-white mx-6
+        flex flex-row items-center justify-center gap-2 w-fit"
         href="/addComment"
       >
+        <BiCommentAdd />
         Add comment
       </Link>
       {comments.map((comm) => (
@@ -74,13 +85,16 @@ const CommentList = () => {
               <h2 className="text-xl font-semibold">{comm.title}</h2>
               <div>{comm.comment}</div>
             </div>
-            <div className="flex gap-2">
-              <RemoveCommentBtn id={comm._id} />
 
-              <Link href={`/editComment/${comm._id}`}>
-                <GrEdit className="text-green-600" />
-              </Link>
-            </div>
+            {session && (
+              <div className="flex gap-2">
+                <RemoveCommentBtn id={comm._id} />
+
+                <Link href={`/editComment/${comm._id}`}>
+                  <GrEdit className="text-green-600" />
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       ))}
