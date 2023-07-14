@@ -1,29 +1,30 @@
-import React from 'react'
+import EditCommentForm from "@/components/EditCommentForm";
+import React from "react";
 
-const editComment = () => {
-  return (
-    <form className="flex flex-col gap-3 m-8">
-      <input
-        placeholder="Comment title"
-        type="text"
-        className="border border-slate-500 px-8 py-2"
-      ></input>
+const getCommentById = async (id) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/comments/${id}`, {
+      cache: "no-store", //get the updated version, no cache
+    });
 
-      <input
-        placeholder="Add your comment here"
-        type="text"
-        className="border border-slate-500 px-8 py-2"
-      ></input>
+    if (!res.ok) {
+      throw new Error("Failed to fetch topic");
+    }
 
-      <button
-        className="bg-green-900 text-white px-6  py-2 
-      w-fit rounded-md"
-      >
-        {" "}
-        Update comment
-      </button>
-    </form>
-  );
-}
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-export default editComment
+const editComment = async ({ params }) => {
+  const { id } = params;
+  const { comment } = await getCommentById(id);
+  // const {title, comment} = comment
+  const title = comment.title;
+  const commentBody = comment.comment;
+
+  return <EditCommentForm id={id} title={title} comment={commentBody} />;
+};
+
+export default editComment;
