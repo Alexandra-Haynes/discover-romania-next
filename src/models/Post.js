@@ -5,7 +5,7 @@ const PostSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      min: 4,
+      min: 6,
     },
     commentBody: {
       type: String,
@@ -22,6 +22,7 @@ const PostSchema = new mongoose.Schema(
         "Impressions",
         "Complaints",
         "Recommendations",
+        "Stories from the locals"
       ],
     },
     authorId: {
