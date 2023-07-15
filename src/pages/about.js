@@ -1,17 +1,18 @@
-import Footer from '@/components/Footer';
-import NavBar from '@/components/NavBar';
+import Footer from "@/components/Footer";
+import NavBar from "@/components/NavBar";
 import { FactsData } from "@/components/FactsData";
 import CommentSection from "@/components/CommentSection";
-import React from 'react'
+import React from "react";
 
 const facts = () => {
   return (
     <>
       <section className=" bg-gray-200 relative">
-        <NavBar />
-        <h1 className='text-2xl text-center font-bold pt-10 pb-4 uppercase'>Interesting facts about Romania</h1>
-       <div className='h-[2px] w-[50%] mx-auto bg-primaryBrown/80 mb-10'></div>
-        <ul className='list-none'>
+        <h1 className="text-2xl text-center font-bold pt-10 pb-4 uppercase">
+          Interesting facts about Romania
+        </h1>
+        <div className="h-[2px] w-[50%] mx-auto bg-primaryBrown/80 mb-10"></div>
+        <ul className="list-none">
           {FactsData.map((fact) => {
             return (
               <li key={fact.id}>
@@ -33,11 +34,9 @@ const facts = () => {
             );
           })}
         </ul>
-        <CommentSection />
       </section>
-      <Footer />
     </>
   );
-}
+};
 
-export default facts
+export default facts;

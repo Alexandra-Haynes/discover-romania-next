@@ -1,8 +1,8 @@
-
+import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
-import './globals.css'
+import "./globals.css";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
       <Head>
@@ -14,7 +14,10 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
         <title>Discover Romania</title>
       </Head>
-      <Component {...pageProps} />
+
+      <SessionProvider session={session} refetchInterval={5 * 60}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </>
   );
 }

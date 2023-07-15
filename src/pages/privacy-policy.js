@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer";
-import NavBar from "@/components/NavBar";
 import React from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
@@ -12,7 +10,6 @@ const PrivacyPolicy = () => {
         className="h-screen px-6 pb-20 overflow-x-hidden 
       bg-gradient-to-tr from-cyan-200 to bg-white xl:px-60 "
       >
-        <NavBar />
         <h1 className="text-xl font-semibold py-6 text-center mx-auto w-2/3 2xl:text-4xl">
           {" "}
           Code with Aloha Privacy Policy
@@ -50,7 +47,6 @@ const PrivacyPolicy = () => {
         />
 
         <TextBlock title="Last updated: " text="June 2023" />
-
         <Link
           href="/"
           className="text-orange-600 font-satisfy text-lg cursor-pointer hover:text-orange-400"
@@ -61,7 +57,6 @@ const PrivacyPolicy = () => {
           </div>
         </Link>
       </section>
-      <Footer />
     </>
   );
 };

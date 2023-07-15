@@ -1,13 +1,10 @@
-import Footer from "@/components/Footer";
 import { PhotosData } from "../components/PhotoData";
 import "../components/PhotosStyles.css";
-import NavBar from "@/components/NavBar";
 
 function PhotoGallery() {
   return (
     <>
       <div className="photoGallery">
-        <NavBar />
         <h1 className="text-center text-4xl font-bold py-20">Photo Gallery</h1>
         <ul>
           {PhotosData.map((item) => {
@@ -20,7 +17,6 @@ function PhotoGallery() {
           })}
         </ul>
       </div>
-      <Footer />
     </>
   );
 }
