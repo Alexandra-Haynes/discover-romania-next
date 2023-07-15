@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { SessionProvider, signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Logo from "./Logo";
 import { HiOutlineMenu } from "react-icons/hi";
@@ -82,40 +82,41 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
-
-        {session?.user ? (
-          <>
-            <Link
-              href="/create-post"
-              className="bg-primaryBrown hover:bg-primaryBlue transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
-            >
-              Create a post
-            </Link>
-            <button
-              onClick={() => {
-                signOut();
-              }}
-              className="bg-primaryCyan hover:bg-primaryBrown transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
-            >
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link
-              href="/login"
-              className="bg-primaryBrown hover:bg-primaryBlue transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
-            >
-              Log In
-            </Link>
-            <Link
-              href="/register"
-              className="bg-primaryCyan hover:bg-primaryBrown transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
-            >
-              Create account
-            </Link>
-          </>
-        )}
+        <SessionProvider>
+          {session?.user ? (
+            <>
+              <Link
+                href="/create-post"
+                className="bg-primaryBrown hover:bg-primaryBlue transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+              >
+                Create a post
+              </Link>
+              <button
+                onClick={() => {
+                  signOut();
+                }}
+                className="bg-primaryCyan hover:bg-primaryBrown transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="bg-primaryBrown hover:bg-primaryBlue transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+              >
+                Log In
+              </Link>
+              <Link
+                href="/register"
+                className="bg-primaryCyan hover:bg-primaryBrown transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+              >
+                Create account
+              </Link>
+            </>
+          )}
+        </SessionProvider>
       </nav>
     </header>
   );
