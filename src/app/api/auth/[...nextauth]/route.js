@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import User from "@/models/user";
 import { signJwtToken } from "@/libs/jwt";
 import bcrypt from "bcrypt";
-import connectMongoDB from "@/libs/mongodb";
+import dbConnect from "@/libs/mongodb";
 
 
 const handler = NextAuth({
@@ -21,7 +21,7 @@ const handler = NextAuth({
       async authorize(credentials, req) {
         const { email, password } = credentials;
 
-        await connectMongoDB();
+        await dbConnect();
 
         const user = await User.findOne({ email });
 
@@ -36,7 +36,7 @@ const handler = NextAuth({
         } else {
           const { password, ...currentUser } = user._doc;
 
-          const accessToken = signJwtToken(currentUser, { expiresIn: "2d" });
+          const accessToken = signJwtToken(currentUser, { expiresIn: "7d" });
 
           return {
             ...currentUser,
