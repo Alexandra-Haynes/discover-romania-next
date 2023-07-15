@@ -86,7 +86,7 @@ const NavBar = () => {
           {session?.user ? (
             <>
               <Link
-                href="/create-post"
+                href="/createPost"
                 className="bg-primaryBrown hover:bg-primaryBlue transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
               >
                 Create a post

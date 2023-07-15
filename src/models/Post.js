@@ -17,12 +17,10 @@ const PostSchema = new mongoose.Schema(
       required: true,
       enum: [
         "Travel",
-        "Tips",
         "Questions",
-        "Impressions",
         "Complaints",
         "Recommendations",
-        "Stories from the locals"
+        "Stories"
       ],
     },
     authorId: {
