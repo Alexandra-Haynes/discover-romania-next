@@ -1,9 +1,9 @@
-import dbConnect from "@/libs/mongodb";
+import db from "@/libs/mongodb";
 import Post from "@/models/Post";
 import { verifyJwtToken, verifyToken } from "@/libs/jwt";
 
 export async function GET(req) {
-  await dbConnect();
+  await db.connect();
 
   try {
     const posts = await Post.find({}).limit(12).populate("authorId");
@@ -14,7 +14,7 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-  await dbConnect();
+  await db.connect();
 
   //make sure is the author
   const accessToken = req.headers.get("authorization");

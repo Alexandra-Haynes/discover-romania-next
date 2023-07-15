@@ -1,9 +1,9 @@
-import dbConnect from "@/libs/mongodb";
+import db from "@/libs/mongodb";
 import { verifyJwtToken, verifyToken } from "@/libs/jwt";
 import Comment from "@/models/Comment";
 
 export async function GET(req, ctx) {
-  await dbConnect();
+  await db.connect();
   const id = ctx.params.id;
   try {
     const comments= await Comment.find({postId: id}).populate('authorId')
@@ -14,7 +14,7 @@ export async function GET(req, ctx) {
 }
 
 export async function DELETE(req, ctx) {
-  await dbConnect();
+  await db.connect();
   const id = ctx.params.id;
   const accessToken = req.headers.get("authorization");
   const token = accessToken.split(" ")[1]; 

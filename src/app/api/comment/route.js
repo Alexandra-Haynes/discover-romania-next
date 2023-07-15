@@ -1,9 +1,9 @@
-import dbConnect from "@/libs/mongodb";
+import db from "@/libs/mongodb";
 import Comment from "@/models/Comment";
 import { verifyJwtToken, verifyToken } from "@/libs/jwt";
 
 export async function POST(req) {
-  await dbConnect();
+  await db.connect();
 
   const accessToken = req.headers.get("authorization");
   const token = accessToken.split(" ")[1];

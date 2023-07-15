@@ -1,9 +1,9 @@
-import dbConnect from "@/libs/mongodb";
+import db from "@/libs/mongodb";
 import { verifyJwtToken, verifyToken } from "@/libs/jwt";
 import Post from "@/models/Post";
 
 export async function PUT(req, ctx) {
-  await dbConnect();
+  await db.connect();
   const id = ctx.params.id;
   const accessToken = req.headers.get("authorization");
   const token = accessToken.split(" ")[1]; //decode token

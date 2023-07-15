@@ -1,10 +1,10 @@
 import User from "@/models/User";
-import bcrypt from "bcryptjs";
-import dbConnect from "@/libs/mongodb";
+import bcrypt from "bcrypt";
+import db from "@/libs/mongodb";
 
 export async function POST(req) {
   try {
-    await dbConnect();
+    await db.connect();
     const { username, email, password: pass } = await req.json();
     const isExisting = await User.findOne({ email });
     if (isExisting) throw new Error("User already exists"); //TODO: improve UI

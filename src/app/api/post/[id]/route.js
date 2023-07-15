@@ -1,10 +1,10 @@
-import dbConnect from "@/libs/mongodb";
+import db from "@/libs/mongodb";
 import { verifyJwtToken, verifyToken } from "@/libs/jwt";
 import Post from "@/models/Post";
-import User from "@/models/user";
+import User from "@/models/User";
 
 export async function GET(req, ctx) {
-  await dbConnect();
+  await db.connect();
   const id = ctx.params.id;
 
   try {
@@ -18,7 +18,7 @@ export async function GET(req, ctx) {
 }
 
 export async function PUT(req, ctx) {
-  await dbConnect();
+  await db.connect();
   const id = ctx.params.id;
   //make sure user is the author
   const accessToken = req.headers.get("authorization");
@@ -59,7 +59,7 @@ export async function PUT(req, ctx) {
 }
 
 export async function DELETE(req, ctx) {
-  await dbConnect();
+  await db.connect();
   const id = ctx.params.id;
   const accessToken = req.headers.get("authorization");
   const token = accessToken.split(" ")[1]; //decode token
