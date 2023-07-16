@@ -1,6 +1,5 @@
 import Link from "next/link";
-import CommentList from "@/components/CommentList";
-import PostDetails from "@/components/PostDetails";
+
 import Post from "@/components/Post";
 import React, { useEffect, useState } from "react";
 import NavBar from "@/components/NavBar";
@@ -49,20 +48,7 @@ export default function Forum() {
                   interesting stories and recommendations. Feel free to post
                   comments.
                 </h2>
-                <div className="flex items-center justify-center mt-4 gap-x-5">
-                  <Link
-                    href="/"
-                    className="border-1 bg-orange-300 border-primary px-6 py-2 rounded-md text-white font-semibold hover:bg-primary hover:text-white transition-all duration-300"
-                  >
-                    Featured Post
-                  </Link>
-                  <Link
-                    href="/"
-                    className="border-1 bg-orange-300 border-primary px-6 py-2 rounded-md text-white font-semibold hover:bg-primary hover:text-white transition-all duration-300"
-                  >
-                    Our Users
-                  </Link>
-                </div>
+               
               </div>
             </div>
           </div>
@@ -72,7 +58,6 @@ export default function Forum() {
           <h3>Loading posts...</h3>
         ) : (
           <>
-            {posts.length > 0 && <h2 className="text-center">Forum</h2>}
             {posts.length > 0 ? (
               posts.map((post) => <Post key={post._id} post={post} />)
             ) : (
