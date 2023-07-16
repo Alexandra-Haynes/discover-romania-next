@@ -1,7 +1,10 @@
 import Link from "next/link";
 import CommentList from "@/components/CommentList";
+import PostDetails from "@/components/PostDetails";
 import Post from "@/components/Post";
 import React, { useEffect, useState } from "react";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export async function fetchPosts() {
   const res = await fetch("http://localhost:3000/api/post", {
@@ -32,6 +35,7 @@ export default function Forum() {
 
   return (
     <>
+    <NavBar />
       <main className="max-w-screen-sm m-auto">
         <section>
           <div className="flex items-center bg-white">
@@ -77,6 +81,7 @@ export default function Forum() {
           </>
         )}
       </main>
+      <Footer />
     </>
   );
 }

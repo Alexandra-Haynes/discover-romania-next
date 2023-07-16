@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 
-const Post = ({ post: { title, desc, likes, category, authorId, _id } }) => {
+const Post = ({ post: { title, commentBody, likes, category, authorId, _id } }) => {
   const { data: session } = useSession();
   const [isLiked, setIsLiked] = useState(false);
   const [postLikes, setPostLikes] = useState(0);
@@ -47,7 +47,7 @@ const Post = ({ post: { title, desc, likes, category, authorId, _id } }) => {
             <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
               {title}
             </h2>
-            <p className="leading-relaxed mb-8">{desc}</p>
+            <p className="leading-relaxed mb-8">{commentBody}</p>
             <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
               <Link
                 href={`/post/${_id}`}
@@ -67,7 +67,7 @@ const Post = ({ post: { title, desc, likes, category, authorId, _id } }) => {
             <a className="inline-flex items-center">
               <span className="flex-grow flex flex-col pl-4">
                 <span className="title-font font-medium text-gray-900">
-                  Arthur: {authorId.username}
+                  Author: {authorId.username}
                 </span>
               </span>
             </a>

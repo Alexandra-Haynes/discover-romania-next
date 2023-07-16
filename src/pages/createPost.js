@@ -3,11 +3,13 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
+import {  toast } from "react-toastify";
+
 
 const Createpost = () => {
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [category, setCategory] = useState("Sports");
+  const [commentBody, setCommentBody] = useState("");
+  const [category, setCategory] = useState("Recommendations");
 
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -23,7 +25,7 @@ const Createpost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !category || !desc) {
+    if (!title || !category || !commentBody) {
       toast.error("All fields are required");
       return;
     }
@@ -37,7 +39,7 @@ const Createpost = () => {
         method: "POST",
         body: JSON.stringify({
           title,
-          desc,
+          commentBody,
           category,
           authorId: session?.user?._id,
         }),
@@ -49,9 +51,9 @@ const Createpost = () => {
 
       const post = await res.json();
 
-      router.push(`/`);
+      router.push(`/forum`);
     } catch (error) {
-      console.log(error);
+      console.log('Error on submit', error.message);
     }
   };
   return (
@@ -76,7 +78,7 @@ const Createpost = () => {
         <div>
           <input
             type="text"
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(e) => setCommentBody(e.target.value)}
             className="w-full focus:outline-none pt-8 pb-8 pl-2 mt-4"
             placeholder="What do you want to share in the forum?"
           />
@@ -96,7 +98,8 @@ const Createpost = () => {
         </div>
         <button
           type="submit"
-          className="px-6 py-2.5 rounded-md bg-primaryBrown mt-3 text-white hover:bg-blue-500 hover:text-white transition-all duration-300"
+          className="px-6 py-2.5 rounded-md bg-primaryBrown mt-3 text-white 
+          hover:bg-green-900 hover:text-white transition-all duration-300"
         >
           Post in forum
         </button>
