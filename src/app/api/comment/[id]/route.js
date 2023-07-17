@@ -1,4 +1,4 @@
-import db from "@/libs/mongodb";
+import db from "@/libs/db";
 import { verifyJwtToken, verifyToken } from "@/libs/jwt";
 import Comment from "@/models/Comment";
 
@@ -6,7 +6,7 @@ export async function GET(req, ctx) {
   await db.connect();
   const id = ctx.params.id;
   try {
-    const comments= await Comment.find({postId: id}).populate('authorId')
+    const comments = await Comment.find({ postId: id }).populate("authorId");
     return new Response(JSON.stringify(post), { status: 200 });
   } catch (error) {
     return new Response(JSON.stringify(null), { status: 500 });
@@ -17,7 +17,7 @@ export async function DELETE(req, ctx) {
   await db.connect();
   const id = ctx.params.id;
   const accessToken = req.headers.get("authorization");
-  const token = accessToken.split(" ")[1]; 
+  const token = accessToken.split(" ")[1];
   const decodedToken = verifyJwtToken(token);
 
   if (!accessToken || !decodedToken) {

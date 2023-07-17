@@ -93,7 +93,6 @@ const Createpost = () => {
             <option value="Questions">Questions</option>
             <option value="Stories">Stories</option>
             <option value="Travel">Travel Tips</option>
-            <option value="Complaints">Complaints</option>
           </select>
         </div>
         <button

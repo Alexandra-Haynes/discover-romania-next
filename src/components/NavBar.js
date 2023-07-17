@@ -6,6 +6,11 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { HiOutlineMenu } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
+import {LiaHomeSolid} from 'react-icons/lia'
+import {BiBookReader} from 'react-icons/bi'
+import {AiFillCar} from 'react-icons/ai'
+import {BsChatDots} from 'react-icons/bs'
+import {HiOutlinePhoto} from 'react-icons/hi2'
 
 const NavBar = () => {
   const { data: session } = useSession();
@@ -19,66 +24,92 @@ const NavBar = () => {
 
   return (
     <header
-      className="z-50 cursor-pointer mx-auto
-    flex justify-between items-center px-5 py-12"
+      className="fixed cursor-pointer 
+    flex justify-between items-center 
+    px-12 pt-12 pb-24 w-screen z-50"
     >
       <Logo />
-
-      <div className="lg:hidden z-50 ">
+      <div className="lg:hidden z-50">
         {navIsVisible ? (
-          <MdClose className="w-6 h-6" onClick={navVisibilityHandler} />
+          <MdClose
+            className="w-6 h-6 text-primary"
+            onClick={navVisibilityHandler}
+          />
         ) : (
-          <HiOutlineMenu className="w-6 h-6" onClick={navVisibilityHandler} />
+          <HiOutlineMenu
+            className="w-6 h-6 text-primary"
+            onClick={navVisibilityHandler}
+          />
         )}
       </div>
       <nav
-        className={`${navIsVisible ? "left-0" : "left-full"}
+        className={`${
+          navIsVisible
+            ? "left-0 bg-light"
+            : "left-full  shadow-none w-screen "
+        }
         transition-all duration-300 
-        flex flex-col w-full lg:w-auto lg:flex-row justify-center 
+        flex flex-col w-full h-1/2 lg:w-auto lg:flex-row 
         lg:justify-end fixed top-0 bottom-0 -right-full lg:static
-        items-center gap-x-9`}
+        items-center justify-center gap-x-9 `}
       >
         <ul
-          className="z-50  flex flex-col items-center gap-x-5 gap-y-5
-        lg:flex-row font-semibold "
+          className="flex flex-col items-end gap-x-5 gap-y-5
+        lg:flex-row gap-2 "
         >
           <li>
             {" "}
-            <Link href={"/"} className="text-2xl hover:font-bold">
-              Home
+            <Link
+              href={"/"}
+              className="text-2xl 
+              flex flex-row items-center justify-center gap-2"
+            >
+              <LiaHomeSolid /> home.
             </Link>
           </li>
           <li>
-            <Link href={"/about"} className="text-2xl hover:font-bold ">
+            <Link
+              href={"/about"}
+              className="text-2xl 
+              flex flex-row items-center justify-center gap-2 "
+            >
               {" "}
-              About Romania
+              <BiBookReader />
+              about.
             </Link>
           </li>
           <li>
             <Link
               href={"/travel"}
-              className="text-2xl hover:font-bold
+              className="text-2xl 
+              flex flex-row items-center justify-center gap-2
             "
             >
-              Travel to Romania
+              {" "}
+              <AiFillCar />
+              travel.
             </Link>
           </li>
           <li>
             <Link
               href={"/forum"}
-              className="text-2xl hover:font-bold
+              className="text-2xl  flex flex-row 
+              items-center justify-center gap-2
             "
             >
-              Forum
+              {" "}
+              <BsChatDots />
+              forum.
             </Link>
           </li>
           <li>
             <Link
               href={"/gallery"}
-              className="text-2xl hover:font-bold
+              className="text-2xl  flex flex-row items-center
+               justify-center gap-2
             "
             >
-              Photo Gallery
+              <HiOutlinePhoto /> gallery.
             </Link>
           </li>
         </ul>
@@ -86,8 +117,9 @@ const NavBar = () => {
           {session?.user ? (
             <>
               <Link
-                href="/createPost"
-                className="bg-primaryBrown hover:bg-primaryBlue transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+                href="/create-post"
+                className="bg-primary hover:bg-highlights hover:text-black transition-all
+                 duration-300 text-white my-2 px-4 py-2 text-center rounded-md w-[180px]"
               >
                 Create a post
               </Link>
@@ -95,7 +127,8 @@ const NavBar = () => {
                 onClick={() => {
                   signOut();
                 }}
-                className="bg-primaryCyan hover:bg-primaryBrown transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+                className="bg-highlights hover:bg-primary hover:text-white transition-all duration-300
+                text-center text-black w-[180px] px-4 py-2 rounded-md "
               >
                 Logout
               </button>
@@ -104,13 +137,15 @@ const NavBar = () => {
             <>
               <Link
                 href="/login"
-                className="bg-primaryBrown hover:bg-primaryBlue transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+                className="bg-primaryBrown hover:bg-primaryBlue transition-all 
+                duration-300 text-white my-2 px-4 py-2 rounded-md "
               >
                 Log In
               </Link>
               <Link
                 href="/register"
-                className="bg-primaryCyan hover:bg-primaryBrown transition-all duration-300 text-white mt-3 px-6 py-3 rounded-md "
+                className="bg-primaryCyan hover:bg-primaryBrown 
+                transition-all duration-300 text-white px-4 py-2 rounded-md "
               >
                 Create account
               </Link>

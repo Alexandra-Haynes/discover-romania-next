@@ -1,10 +1,9 @@
-import Footer from "@/components/Footer";
-import NavBar from "@/components/NavBar";
+
 import { FactsData } from "@/components/FactsData";
-import CommentSection from "@/components/CommentSection";
+
 import React from "react";
 
-const facts = () => {
+const About = () => {
   return (
     <>
       <section className=" bg-gray-200 relative">
@@ -39,4 +38,4 @@ const facts = () => {
   );
 };
 
-export default facts;
+export default About;

@@ -18,7 +18,6 @@ const PostSchema = new mongoose.Schema(
       enum: [
         "Travel",
         "Questions",
-        "Complaints",
         "Recommendations",
         "Stories"
       ],

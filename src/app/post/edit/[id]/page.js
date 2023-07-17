@@ -105,11 +105,10 @@ const Edit = (ctx) => {
             className="w-full focus:outline-none p-2 mt-4"
           >
             <option>Categories</option>
-            <option value="Sports">Sports</option>
-            <option value="Money">Money</option>
-            <option value="News">News</option>
-            <option value="Tech">Tech</option>
-            <option value="Programming">Programming</option>
+            <option value="Recommendations">Recommendations</option>
+            <option value="Questions">Questions</option>
+            <option value="Stories">Stories</option>
+            <option value="Travel">Travel</option>
           </select>
         </div>
         <div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
-import { TextBlock } from "./terms-of-use";
+import { TextBlock } from "../terms-of-use/page";
 
 const PrivacyPolicy = () => {
   return (

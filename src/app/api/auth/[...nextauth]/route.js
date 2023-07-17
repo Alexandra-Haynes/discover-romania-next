@@ -3,8 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import User from "@/models/User";
 import { signJwtToken } from "@/libs/jwt";
 import bcrypt from "bcrypt";
-import db from "@/libs/mongodb";
-
+import db from "@/libs/db";
 
 const handler = NextAuth({
   providers: [
@@ -50,22 +49,23 @@ const handler = NextAuth({
     signIn: "/login",
   },
   callbacks: {
-    async jwt({token, user}) {
-        if(user) { //user has access
-            token.accessToken = user.accessToken
-            token._id = user._id
-        }
-        return token //to be stored
+    async jwt({ token, user }) {
+      if (user) {
+        //user has access
+        token.accessToken = user.accessToken;
+        token._id = user._id;
+      }
+      return token; //to be stored
     },
     //setup session
-    async session({session, token}) {
-        if(token){
-            session.user._id = token._id
-            session.user.accessToken = token.accessToken
-        }
-        return session
-    }
-  }
+    async session({ session, token }) {
+      if (token) {
+        session.user._id = token._id;
+        session.user.accessToken = token.accessToken;
+      }
+      return session;
+    },
+  },
 });
 
 export { handler as GET, handler as POST };

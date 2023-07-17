@@ -9,7 +9,10 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="w-full max-w-screen bg-slate-900 text-white pt-12">
+    <footer
+      className="w-full max-w-screen bg-primary text-slate-400 pt-8
+    "
+    >
       <div
         className="flex flex-col items-center gap-2 
       justify-center text-sm xl:text-xl pt-6  "
@@ -28,21 +31,22 @@ const Footer = () => {
         Copyright © Discover Romania 2023
       </p>
 
-<div className="w-1/2 h-[1px] mx-auto bg-slate-300/80">
-
-</div>
-      <div className="flex items-center justify-around pt-6 pb-12 w-1/2 mx-auto text-slate-400 ">
-        
-        <Link href="instagram.com">
+      <div className="w-1/2 h-[1px] mx-auto bg-white/50"></div>
+      <div
+        className="flex items-center justify-around pt-6 pb-12 
+        w-1/2 mx-auto max-w-[400px]
+       text-slate-400 text-2xl"
+      >
+        <Link href="instagram.com" className="hover:text-white">
           <AiFillInstagram />
         </Link>
-        <Link href="instagram.com">
+        <Link href="instagram.com" className="hover:text-white">
           <AiFillYoutube />
         </Link>
-        <Link href="instagram.com">
+        <Link href="instagram.com" className="hover:text-white">
           <AiFillFacebook />
         </Link>
-        <Link href="instagram.com">
+        <Link href="instagram.com" className="hover:text-white">
           <AiFillTwitterCircle />
         </Link>
       </div>

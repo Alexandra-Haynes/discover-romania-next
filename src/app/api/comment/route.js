@@ -1,4 +1,4 @@
-import db from "@/libs/mongodb";
+import db from "@/libs/db";
 import Comment from "@/models/Comment";
 import { verifyJwtToken, verifyToken } from "@/libs/jwt";
 

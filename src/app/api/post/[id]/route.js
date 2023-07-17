@@ -1,6 +1,6 @@
-import db from "@/lib/db";
+import db from "@/libs/db";
 
-import { verifyJwtToken } from "@/lib/jwt";
+import { verifyJwtToken } from "@/libs/jwt";
 
 import Post from "@/models/Post";
 import User from "@/models/User";

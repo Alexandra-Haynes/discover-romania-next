@@ -1,4 +1,4 @@
-import { PhotosData } from "../components/PhotoData";
+import { PhotosData } from "../../components/PhotoData";
 import "../components/PhotosStyles.css";
 
 function PhotoGallery() {
