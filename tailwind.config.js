@@ -17,17 +17,20 @@ module.exports = {
         },
       },
       backgroundImage: {
+        gradient: 'url("/assets/bg-img.png")',
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        mobileBg: 'url("/assets/mobileBg.jpg")',
+        heroBg: 'url("/assets/mobileHero.jpg")',
       },
       fontFamily: {
         Quicksand: "Quicksand",
       },
       colors: {
-        primaryBrown: "#4E3620",
-        primaryBlue: "#C8EED9",
+        primary: "#082032",
+        secondary: "#334756",
+        highlights: "#FF4C29",
+        light: "#ECF8F9",
       },
       dropShadow: {
         textShadow: " 1px 0 5px rgba(0, 0, 0, .7)",
