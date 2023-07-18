@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.0",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
@@ -16,6 +17,7 @@
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.6",
     "framer-motion": "^10.12.16",
+    "google-map-react": "^2.2.1",
     "jsonwebtoken": "^9.0.1",
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.4",
