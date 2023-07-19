@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.1.5",
+    "@chakra-ui/react": "^2.8.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@react-google-maps/api": "^2.19.0",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
@@ -16,7 +20,7 @@
     "bcryptjs": "^2.4.3",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.6",
-    "framer-motion": "^10.12.16",
+    "framer-motion": "^10.12.22",
     "google-map-react": "^2.2.1",
     "jsonwebtoken": "^9.0.1",
     "mongodb": "^5.7.0",

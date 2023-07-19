@@ -1,8 +1,11 @@
 
+'use client'
+
 import "./globals.css";
 import Provider from "@/SessionProvider";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
+import { ChakraProviders } from "./chakraProviders";
 
 export const metadata = {
   title: "Discover Romania",
@@ -13,11 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Provider>
-          <NavBar />
-          {children}
-          <Footer />
-        </Provider>
+        <ChakraProviders>
+          <Provider>
+            <NavBar />
+            {children}
+            <Footer />
+          </Provider>
+        </ChakraProviders>
       </body>
     </html>
   );
